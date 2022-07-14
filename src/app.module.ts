@@ -7,7 +7,7 @@ import {MongooseModule} from '@nestjs/mongoose';
 import {CommentModule} from './comments/comment.module';
 
 @Module({
-  imports: [PostModule,AuthModule,CommentModule, MongooseModule.forRoot('mongodb://localhost:27017/nest-post-api')],
+  imports: [PostModule,AuthModule,CommentModule, MongooseModule.forRoot(process.env.MONGO || 'mongodb://localhost:27017/nest-post-api')],
   controllers: [AppController],
   providers: [AppService],
 })
