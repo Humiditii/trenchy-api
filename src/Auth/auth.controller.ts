@@ -47,7 +47,7 @@ export class AuthController {
         @Res() res: Response,
         @Body() loginDetails: SigninDto): Promise<any|Response|Auth>{
 
-            const checkUser = await this.authService.getUser(loginDetails.name, true)
+            const checkUser = await this.authService.getUser(loginDetails.email, true)
             if(!checkUser){
                 throw new HttpException('User not found', HttpStatus.NOT_FOUND)
             }
