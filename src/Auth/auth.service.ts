@@ -15,6 +15,12 @@ export class AuthService {
 
     async registerNewUsers( createUserDto: CreateUserDto ): Promise<Auth> {
 
+        const is_user = await this.getUser(createUserDto.email)
+
+        if(is_user){
+            throw new HttpException('User exist!', HttpStatus.FORBIDDEN);
+        }
+
         if(createUserDto.confirmPwd !== createUserDto.password){
             throw new HttpException('mismatch password', HttpStatus.FORBIDDEN);
         }
@@ -29,8 +35,8 @@ export class AuthService {
         return jwtToken
     }
 
-    async getUser(name:string, show?:boolean): Promise<UserBool> {
-        const get_user = await this.authModel.findOne({name:name})
+    async getUser(email:string, show?:boolean): Promise<UserBool> {
+        const get_user = await this.authModel.findOne({email:email})
         if(get_user && show){
             return get_user
         }

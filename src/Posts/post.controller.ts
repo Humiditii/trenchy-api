@@ -74,13 +74,13 @@ export class PostController {
         })
     }
 
-    @Get('/posts/:userId')
+    @Get('/posts')
     async getAllPosts(
         @Res() res,
-        @Param('userId') userId
+        @Request() req,
         ): Promise<postType|Response>{
             try {
-                const posts = await this.postService.getUserPosts(userId)
+                const posts = await this.postService.getUserPosts(req.user.userId)
                 return res.status(200).json({
                     message: 'user posts fetched',
                     data: posts
