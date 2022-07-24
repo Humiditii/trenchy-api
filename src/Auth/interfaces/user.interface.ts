@@ -9,5 +9,6 @@ export type Pwd = boolean | string
 
 export interface JwtPayLoad {
     userMail: string;
+    username:string;
     userId: string;
 }

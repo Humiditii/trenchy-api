@@ -56,6 +56,7 @@ export class AuthController {
             if(isSame){
                 const payload:JwtPayLoad = {
                     userMail: user.email,
+                    username: user.name,
                     userId: user._id
                 }
                 const jwt_token = await this.authService.signUser(payload)
