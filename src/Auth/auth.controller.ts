@@ -29,7 +29,7 @@ export class AuthController {
     async signup(
         @Body() userDetails: CreateUserDto,
         @Res() res: Response): Promise<Response> {
-            const checkUser = await this.authService.getUser(userDetails.name)
+            const checkUser = await this.authService.getUser(userDetails.email)
             if(checkUser){
                 return res.status(400).json({msg: 'User exists'})
             }
@@ -55,7 +55,7 @@ export class AuthController {
             const isSame = this.authService.passwordServiceMethod(loginDetails.password, user.password)
             if(isSame){
                 const payload:JwtPayLoad = {
-                    username: user.name,
+                    userMail: user.email,
                     userId: user._id
                 }
                 const jwt_token = await this.authService.signUser(payload)

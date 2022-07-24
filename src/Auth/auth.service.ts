@@ -36,7 +36,11 @@ export class AuthService {
     }
 
     async getUser(email:string, show?:boolean): Promise<UserBool> {
+
         const get_user = await this.authModel.findOne({email:email})
+
+        // console.log(get_user,email)
+
         if(get_user && show){
             return get_user
         }

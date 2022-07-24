@@ -15,6 +15,9 @@ export class Auth {
     @Prop({required: false})
     profile: string;
 
+    @Prop({required:true})
+    email:string
+
 }
 
 

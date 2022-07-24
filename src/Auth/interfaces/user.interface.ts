@@ -8,6 +8,6 @@ export type UserBool = UserI | boolean
 export type Pwd = boolean | string
 
 export interface JwtPayLoad {
-    username: string;
+    userMail: string;
     userId: string;
 }
