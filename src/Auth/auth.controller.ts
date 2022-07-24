@@ -73,7 +73,7 @@ export class AuthController {
     async getProfile(
         @Request() req,
         @Res() res: Response){
-            const this_user = await this.authService.getUser(req.user.username, true)
+            const this_user = await this.authService.getUser(req.user.userMail, true)
             return res.status(HttpStatus.OK).json({
                 this_user
             })
