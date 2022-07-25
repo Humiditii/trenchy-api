@@ -103,6 +103,20 @@ export class PostController {
         return res.status(200).json({message: 'post deleted'})
     }
 
+    @Get('/:postId')
+    async getPost(
+        @Res() res:Response,
+        @Param('postId') postId
+    ):Promise<Response>{
+
+        const post = await this.postService.getPost(postId)
+
+        return res.status(200).json({
+            message:'post fetched!',
+            post
+        })
+    }
+
     // @Get('/post/:postId/comment')
     // async getCommentsOnPost(
     //     @Param('postId') postId

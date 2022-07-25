@@ -40,4 +40,12 @@ export class PostService {
             throw new HttpException('invalid post selected', 500)
         }
     }
+
+    async getPost(post_id:number):Promise<Post>{
+        try {
+            return await this.postModel.findById(post_id).exec()
+        } catch (error) {
+            throw new HttpException('invalid post selected', 500)
+        }
+    }
 }
