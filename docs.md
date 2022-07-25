@@ -56,6 +56,9 @@
 4.  /post/delete/:postId: DELETE 
 * * Header: Authorization: ``` `Bearer +${token}` ```
 
+5.  /post/:postId: GET 
+* * Header: Authorization: ``` `Bearer +${token}` ```
+
 
 \n
 
